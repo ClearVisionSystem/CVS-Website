@@ -19,6 +19,10 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:#8195aa;font-size:1
 @media(max-width:820px){.navlinks{display:none}.hero{padding:70px 0}.hero h1{letter-spacing:-2px}.solution{grid-template-columns:72px 1fr}.solution-action{grid-column:2}.solution-icon{width:68px;height:68px;border-radius:18px;font-size:12px}.product-hero{grid-template-columns:1fr}.product-visual{order:-1}.feature-grid{grid-template-columns:1fr}.workflow{grid-template-columns:1fr 1fr}.product-cta,.footer{flex-direction:column;align-items:flex-start}.screen{height:240px}}
 @media(max-width:520px){.workflow{grid-template-columns:1fr}.brand-title{font-size:14px}.hero p{font-size:16px}.section{padding:70px 0}.solution{padding:22px;gap:18px}}
 </style>
+
+<style>
+.trial-modal{position:fixed;inset:0;background:rgba(4,8,20,.72);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}.trial-modal.show{display:flex}.trial-box{width:min(520px,100%);background:linear-gradient(145deg,#101936,#0a1025);border:1px solid rgba(130,210,255,.28);border-radius:24px;box-shadow:0 25px 80px rgba(0,0,0,.5);padding:30px;color:#fff;position:relative}.trial-box h3{font-size:28px;margin:0 0 10px}.trial-box p{color:#cbd5e1;line-height:1.6;margin:0 0 22px}.trial-download{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;background:#63d9ff;color:#06111e;font-weight:800;border-radius:12px;padding:13px 20px}.trial-close{position:absolute;right:16px;top:12px;border:0;background:transparent;color:#cbd5e1;font-size:28px;cursor:pointer}.trial-note{font-size:13px;color:#94a3b8;margin-top:14px}
+</style>
 </head>
 <body>
 <nav><div class="container nav">
@@ -35,7 +39,7 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:#8195aa;font-size:1
       <div class="kicker">Clear Vision System • Product 01</div>
       <h1>GST 2B <span class="gradient">Reco Pro</span></h1>
       <p>A professional Excel-based GST reconciliation solution built to bring Books and GSTR-2B together, identify what matches, what differs and what needs attention.</p>
-      <div class="product-actions"><a class="btn primary" href="GST_2B_Reco_Pro.xlsm" download="GST_2B_Reco_Pro.xlsm">Request a Trial →</a><a class="btn ghost" href="#product-features">Explore Features</a></div>
+      <div class="product-actions"><a class="btn primary" href="#" onclick="openTrialPopup(event)">Request a Trial →</a><a class="btn ghost" href="#product-features">Explore Features</a></div>
     </div>
     <div class="product-visual"><div class="screen"><div><div class="mini-logo">CVS</div><strong>GST 2B</strong><span>RECO PRO</span></div></div><div class="product-label">A Clear Vision System product for smarter GST reconciliation workflows.</div></div>
   </div>
@@ -95,5 +99,20 @@ footer{border-top:1px solid var(--line);padding:32px 0;color:#8195aa;font-size:1
 </main>
 
 <footer><div class="container footer"><div><strong>Clear Vision System (CVS)</strong><br>Smart Business Solutions</div><div>© 2026 Clear Vision System. All rights reserved.</div></div></footer>
+
+<div class="trial-modal" id="trialModal" role="dialog" aria-modal="true" aria-labelledby="trialTitle" onclick="closeTrialPopup(event)">
+  <div class="trial-box" onclick="event.stopPropagation()">
+    <button class="trial-close" type="button" aria-label="Close" onclick="closeTrialPopup()">×</button>
+    <h3 id="trialTitle">GST 2B Reco Pro — Trial</h3>
+    <p>Your trial package is ready. Click the button below to download the ZIP file containing the GST 2B Reco Pro Excel workbook.</p>
+    <a class="trial-download" href="GST_2B_Reco_Pro_Trial.zip" download="GST_2B_Reco_Pro_Trial.zip">Download Trial ZIP →</a>
+    <div class="trial-note">The ZIP package contains the macro-enabled Excel workbook.</div>
+  </div>
+</div>
+<script>
+function openTrialPopup(e){if(e)e.preventDefault();document.getElementById('trialModal').classList.add('show');document.body.style.overflow='hidden'}
+function closeTrialPopup(e){if(e && e.target!==e.currentTarget)return;document.getElementById('trialModal').classList.remove('show');document.body.style.overflow=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTrialPopup()});
+</script>
 </body>
 </html>
